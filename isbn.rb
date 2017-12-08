@@ -8,9 +8,11 @@ puts "Your number has #{isbn_array.count} digits"
 if isbn_array.count != 10 && isbn_array.count != 13
 	abort ("This number is not of the proper length")
 	
-else print "This number is an acceptable length"
+else print "This number is an acceptable length \n"
 end
 
+
+#def isbn10()
 counter= 0
 newnumber = 0
 number_count.times do
@@ -18,8 +20,18 @@ number  = isbn_array[counter]
 newnumber = newnumber + (number*(counter+1)) #newnumber +(number * counter)
 
 
-print counter, number
+#puts counter, number, newnumber
 counter = counter +1
 end
 #end
-print "The total is #{newnumber}"
+print "The check total is #{newnumber}.  \n"
+if 0 == newnumber%11
+	print "#{isbn_number} is a valid 10 digit ISBN number"
+else
+	print "#{isbn_number} is NOT a valid 10 digit ISBN number"	
+end
+#end
+
+#if isbn_array.count == 10
+#	isbn10()
+#end	
