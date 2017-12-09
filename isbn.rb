@@ -1,40 +1,44 @@
+#This program checks a number to see if it follows the requirements for a valid ISBN number
+#It starts by defining two functions that are used if the number has either 10 or 13 digits as required for valid numbers
+#further down the program it calls one of the functions depending on the number length or aborts the program if the number is neither 10 or 13 digits long
 
 
 def isbn10(isbn_array, isbn_number) #defines a function used to check a 10 digit number
-counter= 0 #establishes a counter
-total10 = 0 #establishes a check number total
-10.times do #initiates a loop through the 10 digit number
-	number  = isbn_array[counter] #pulls number from the isbn array based on its aray location
-	total10 = total10 + (number*(counter+1)) #does multiplication and adds product to total10
-	counter = counter +1 #updates counter
-end #ends do loop
+	counter= 0 #establishes a counter
+	total10 = 0 #establishes a check number total
+	10.times do #initiates a loop through the 10 digit number
+		number  = isbn_array[counter] #pulls number from the isbn array based on its aray location
+		total10 = total10 + (number*(counter+1)) #does multiplication and adds product to total10
+		counter = counter +1 #updates counter
+	end #ends do loop
 
-print "The check total is #{total10}.  \n \n" #prints total10
-if 0 == total10%11 #performs check to see if total10 is evenly divisible by 11 and prints accordingly
+	print "The check total is #{total10}.  \n \n" #prints total10
+	if 0 == total10%11 #performs check to see if total10 is evenly divisible by 11 and prints accordingly
 
-	print "#{isbn_number} is a valid 10 digit ISBN number.  \n \n"
-else
-	print "#{isbn_number} is NOT a valid 10 digit ISBN number.  \n \n"	
-end #ends if statement
+		print "#{isbn_number} is a valid 10-digit ISBN number.  \n \n"
+	else
+		print "#{isbn_number} is NOT a valid 10-digit ISBN number.  \n \n"	
+	end #ends if statement
 end #ends the isbn10 function
 
 
 def isbn13(isbn_array, isbn_number) #defines a function to evaluate a 13 dogot number
-counter= 0 #establishes a counter
-total13 = 0#establishes a check total
-multiples_array = [1,3,1,3,1,3,1,3,1,3,1,3,1] #creates array of values to multiply by the 13 digits
-13.times do #initiates a loop through the 13 digit number
-	number  = isbn_array[counter] #pulls a number from the isbn array based on its array location
-	multiplier = multiples_array[counter] #pulls a number from the multiples array 
-	total13 = total13 + (number * multiplier) #calculates product of digit and multiplier and adds to total13
-	counter += 1 #updates counter
-end #ends loop
-print "The check total is #{total13}.  \n \n" #prints the total13 value
-if 0 == total13%10 #evaluates if total13 is evenly divisible by 10 and prints output acdordingly
-	print "#{isbn_number} is a valid 13 digit ISBN number. \n \n"
-else
-	print "#{isbn_number} is NOT a valid 13 digit ISBN number.  \n \n"	
-end #ends if statement
+	counter= 0 #establishes a counter
+	total13 = 0#establishes a check total
+	multiples_array = [1,3,1,3,1,3,1,3,1,3,1,3,1] #creates array of values to multiply by the 13 digits
+	13.times do #initiates a loop through the 13 digit number
+		number  = isbn_array[counter] #pulls a number from the isbn array based on its array location
+		multiplier = multiples_array[counter] #pulls a number from the multiples array 
+		total13 = total13 + (number * multiplier) #calculates product of digit and multiplier and adds to total13
+		counter += 1 #updates counter
+	end #ends loop
+	
+	print "The check total is #{total13}.  \n \n" #prints the total13 value
+	if 0 == total13%10 #evaluates if total13 is evenly divisible by 10 and prints output acdordingly
+		print "#{isbn_number} is a valid 13-digit ISBN number. \n \n"
+	else
+		print "#{isbn_number} is NOT a valid 13-digit ISBN number.  \n \n"	
+	end #ends if statement
 end #ends the isbn13 function
 
 
