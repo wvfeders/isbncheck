@@ -14,22 +14,45 @@ end
 
 def isbn10(isbn_array, number_count,isbn_number)
 counter= 0
-newnumber = 0
+total10 = 0
 number_count.times do
 number  = isbn_array[counter]
-newnumber = newnumber + (number*(counter+1)) #newnumber +(number * counter)
+total10 = total10 + (number*(counter+1)) #newnumber +(number * counter)
 
 
 #puts counter, number, newnumber
 counter = counter +1
 end
 #end
-print "The check total is #{newnumber}.  \n"
-if 0 == newnumber%11
+print "The check total is #{total10}.  \n"
+if 0 == total10%11
 	print "#{isbn_number} is a valid 10 digit ISBN number"
 else
 	print "#{isbn_number} is NOT a valid 10 digit ISBN number"	
 end
 end
 
-isbn10(isbn_array, number_count, isbn_number)
+def isbn13(isbn_array, number_count, isbn_number)
+counter= 0
+total13 = 0
+multiples_array = [1,3,1,3,1,3,1,3,1,3,1,3,1]
+number_count.times do
+number  = isbn_array[counter]
+multiplier = multiples_array[counter]
+total13 = total13 + (number * multiplier)
+#puts multiplier, total
+counter += 1
+end
+print "The check total is #{total13}.  \n"
+if 0 == total13%10
+	print "#{isbn_number} is a valid 13 digit ISBN number"
+else
+	print "#{isbn_number} is NOT a valid 13 digit ISBN number"	
+end
+end
+
+if isbn_array.count == 10
+	isbn10(isbn_array, number_count, isbn_number)
+else
+	isbn13(isbn_array, number_count, isbn_number)
+end
