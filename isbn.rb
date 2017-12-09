@@ -12,7 +12,7 @@ else print "This number is an acceptable length \n"
 end
 
 
-#def isbn10()
+def isbn10(isbn_array, number_count,isbn_number)
 counter= 0
 newnumber = 0
 number_count.times do
@@ -30,8 +30,6 @@ if 0 == newnumber%11
 else
 	print "#{isbn_number} is NOT a valid 10 digit ISBN number"	
 end
-#end
+end
 
-#if isbn_array.count == 10
-#	isbn10()
-#end	
+isbn10(isbn_array, number_count, isbn_number)
