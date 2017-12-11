@@ -43,8 +43,22 @@ end #ends the isbn13 function
 
 
 puts "Type your ISBN number: \n \n" #asks user for numerical input
-isbn_number = gets.chomp #takes in the number
-isbn_array = isbn_number.split("").map(&:to_i)#("") {|s| s.to_i} #parses the number into individual digits and places in the array
+isbn_number = gets.chomp #takes in the number#("") {|s| s.to_i} #parses the number into individual digits and places in the array
+
+split_text = isbn_number.split('') #creates a string aray contining the isbn
+
+isx = split_text.last #creates isx that copies the last value of the array
+
+if isx == "x" #evaluates if the last value of the array is an'x'
+	split_integer = isbn_number.split("").map(&:to_i) #splits the isbn_number into an array of integers
+	#print split_integer
+	remove = split_integer.pop #removes the last value of the array, the 'x' 
+	isbn_array = split_integer + [10] #creates the isbn_array by adding a 10 to the end of the split_integer array
+	#print  isbn_array
+else
+	isbn_array = isbn_number.split("").map(&:to_i) #if isbn_number does not contain an x this step creates isbn_array containing integers directly from isbn_number
+end #ends the if statement
+
 
 puts "\nYour number has #{isbn_array.count} digits \n \n" #outputs how many digits were entered
 if isbn_array.count == 10 #checks to see if 10 digits are in the number
